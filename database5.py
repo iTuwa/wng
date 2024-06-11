@@ -137,7 +137,7 @@ def school_attendance_app(title, database_file, attendance_log_file):
                                icons=['calendar3', 'clipboard-data', 'person-check'])
 
     if selected == "Attendance":
-        child_pin = st.text_input("Enter Child's PIN:")
+        child_pin = st.text_input("Enter Child's PIN:", type="password")
 
         if st.button("Sign In"):
             if df["PIN_Dad"].isin([child_pin]).any():
