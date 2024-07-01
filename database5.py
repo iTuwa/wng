@@ -55,7 +55,7 @@ def school_attendance_app(title, database_file, attendance_log_file):
             server.starttls()
             server.login(sender_email, sender_password)
             subject = f"Child {action.capitalize()} Confirmation"
-            body = f"Your child, {child_name}, has been {action} by {signer} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}."
+            body = f"Your child, {child_name}, has been {action} by {signer} at {datetime.now() + timedelta(hours = 1).strftime('%Y-%m-%d %H:%M:%S')}."
             message = f"Subject: {subject}\n\n{body}"
             server.sendmail(sender_email, recipient_email, message)
             return True
