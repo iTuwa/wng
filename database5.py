@@ -58,7 +58,7 @@ def school_attendance_app(title, database_file, attendance_log_file):
             subject = f"Child {action.capitalize()} Confirmation"
             timezone = pytz.timezone('Africa/Lagos')
             time_now = datetime.now(timezone)
-            time_plus = time_now + timedelta(hours = 1)
+            time_plus = time_now + timedelta(hours = 0)
             body = f"Your child, {child_name}, has been {action} by {signer} at {time_plus.strftime('%Y-%m-%d %H:%M:%S')}."
             message = f"Subject: {subject}\n\n{body}"
             server.sendmail(sender_email, recipient_email, message)
