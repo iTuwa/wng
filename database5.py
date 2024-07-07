@@ -96,7 +96,10 @@ def school_attendance_app(title, database_file, attendance_log_file):
         st.success(f"Student {name} removed successfully.")
 
     def log_attendance(name, signer, action, attendance_log_file):
-        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        timezone = pytz.timezone('Africa/Lagos')
+        time_now = datetime.now(timezone)
+        time_plus = time_now + timedelta(hours = 0)
+        now = time_plus.strftime('%Y-%m-%d %H:%M:%S')
         attendance_log = pd.DataFrame({"Name": [name], "Signer": [signer], "Action": [action], "DateTime": [now]})
         attendance_log.to_csv(attendance_log_file, mode='a', header=not st.session_state.log_file_exists, index=False)
         st.session_state.log_file_exists = True
